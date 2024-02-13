@@ -1,0 +1,27 @@
+p{
+    font-size: 50px;
+    color: green;
+}
+
+h1 {
+    background-color: purple;
+}
+
+h1{
+    background-color: yellowgreen;
+}
+div{
+    border:1px solid black;
+}
+
+.box{
+    border:5px dashed red;
+}
+
+#org-box{
+    border:10px dotted green;
+}
+a:hover{
+    color: green;
+    font-size: 100 px;
+}
