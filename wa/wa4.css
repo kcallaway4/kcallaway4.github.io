@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+  }
+  
+html {
+    font-family: 'Helvetica neue', Arial, 'sans serif';
+    font-size: 0.65em;
+    background-color: #ccc;
+  }
+  
+.card {
+    width: 35em;
+    height: 22em;
+    margin: 5em auto;
+    background-color: red;
+    border: 0.2em solid black;
+    border-radius: 1.5em;
+  }
+
+  
+.card header{
+    background-image: linear-gradient(to bottom,rgba(0,0,0,0.1), rgba(0,0,0,0));
+    border-radius: 1.5em 1.5em 0 0;
+    height: 1.5em;
+    padding: 1em;
+  }
+  
+.card footer{
+    background-image: linear-gradient(to bottom,rgba(0,0,0,0), rgba(0,0,0,0.1));
+    border-radius: 0 0 1.5em 1.5em;
+    height: 1.5em;
+    padding:1em;
+    font-size: 1.3em;
+}
+  
+
+.card article img{
+    max-height: 100%;
+    float: right;
+}
+
+.card_2 {
+    width: 35em;
+    height: 22em;
+    margin: 5em auto;
+    background-color: #bfcfff;
+    border: 0.2em solid #00165A;
+    border-radius: 1.5em;
+}
+.card_header_2{
+    background-image: linear-gradient(to bottom,rgba(0,0,0,0.1), rgba(0,0,0,0));
+    border-radius: 1.5em 1.5em 0 0;
+    height: 1.5em;
+    padding: 1em;
+    font-family: 'baskerville';
+}
+  
+.card_footer_2{
+    background-image: linear-gradient(to bottom,rgba(0,0,0,0), rgba(0,0,0,0.1));
+    border-radius: 0 0 1.5em 1.5em;
+    height: 1.5em;
+    padding:1em;
+    font-family:'baskerville'
+}
+
+.card_article_img2{
+    max-height: 100%;
+    float: right;
+}
+.card_text_2{
+    font-family:'baskerville';
+    color: white; 
+    padding: 1em;
+    line-height: 1.5em;
+    font-size: 1.3em; 
+}
+
+h2, p {
+    margin:0
+}
+
+article {
+    height: 13em;
+    background-color: rgba(0,0,0,0.4)
+}
+
+h2{
+    font-size: 2em;
+}
+.card_text{
+    color: white; 
+    padding: 1em;
+    line-height: 1.5em;
+    font-size: 1em;
+    
+}
+p{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0em;
+    margin-inline-end: 0em;
+    
+}
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
