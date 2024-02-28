@@ -1,0 +1,29 @@
+html {
+    font-size:50px;
+    background-color: lightslategray;
+}
+
+.flexbox {
+    display: flex;
+    justify-content: center;
+}
+
+.item {
+    padding: 10px;
+    margin: 10px;
+    text-align:center;
+    border: 2px solid blue;
+}
+
+@media screen and (max-width:799px) {
+    html {
+        background-color: lightblue;
+    }
+    .flexbox{
+        display: flex;
+        flex-direction: column;
+    }
+    .item{
+
+    }
+}
