@@ -1,0 +1,141 @@
+body {
+    background-color: black;
+    color: #333;
+    margin: 0;
+    font: 1.2em / 1.2 times;
+  }
+
+  img {
+      max-width: 100%;
+      display: block;
+
+      float: left;
+  }
+  
+  .logo {
+    font-size: 200%;
+    padding: 50px 20px;
+    margin: 0 auto;
+    max-width: 980px;
+    color: black;
+  }
+  .box{
+    border-radius: 25px;
+    padding:10px;
+    width:200px;
+    height:150px;
+    background-color: #FAA0A0;
+    transition:
+        width 2s, 
+        height 2s,
+        rotate 2s,
+        background-color 2s;
+  }
+  .box:hover{
+    width: relative;
+    height: 150px;
+    rotate: 360deg;
+    background-color:#8B0000;
+  }
+  
+  .grid {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 980px;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+  }
+  
+  nav {
+    background-color: #8B0000;
+    padding: .5em;
+    position: sticky;
+    top: 0% ;
+
+  }
+  
+  nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  nav a {
+    color: 	#FAA0A0;
+    text-decoration: none;
+    padding: .5em 1em;
+  }
+
+
+  
+  
+  .photos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+
+  }
+  .billie1{
+    transition:rotate 2s;
+  }
+  .billie1:hover{
+    rotate: 360deg;
+  }
+  .billie2{
+    transition: rotate 2s;
+  }
+  .billie2:hover{
+    rotate: 360deg; 
+  }
+  .brandi{
+    transition: rotate 2s;
+  }
+  .brandi:hover {
+    rotate: 360deg;
+  }
+  .luke{
+    transition:rotate 2s;
+  }
+  .luke:hover{
+    rotate: 360deg;
+  }
+  .rhianna{
+    transition: rotate 2s;
+  }
+  .rhianna:hover{
+    rotate: 360deg;
+  }
+  
+
+  .feature {
+    width: 200px;
+    padding: 10px;
+  }
+  h1,h2{
+    color:	#D22B2B;
+  }
+  p{
+    color:white;
+  }
+@media screen and (max-width:499px){
+    .grid{
+        display:flex;
+        flex-direction:column;
+    }
+    nav ul{
+        flex-direction: column;
+        align-items: center;
+    }
+    .photos{
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
