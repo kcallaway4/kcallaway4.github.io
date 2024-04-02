@@ -1,0 +1,31 @@
+body{
+    background-color: #000;
+}
+
+.header {
+    font-size: 200%;
+    padding: 50px 20px;
+    margin: 0 auto;
+    max-width: 980px;
+    text-align: center;
+    color:white;
+}
+
+nav{
+    background-color: white;
+    padding: .5em;
+    position: sticky;
+    top: 0% ;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+nav a {
+    color: black;
+    text-decoration: none;
+    padding: .5em 1em;
+}
