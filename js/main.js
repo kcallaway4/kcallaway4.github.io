@@ -2,9 +2,9 @@ const customName = document.getElementById('customname');
 const randomize = document.querySelector('.randomize');
 const story = document.querySelector('.story');
 
-let storyText = 'It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.';
-let insertX = ['Willy the GoblinBig','DaddyFather','Christmas'];
-let insertY = ['the White House','Disneyland','the soup kitchen'];
+let storyText = 'It was a rainy day, so :insertx: ran for cover while on a walk. Hail starts to pound on the roof above and :insertx: is now scared. Then suddenly :inserty:, came to the rescue. Or so :insertx: thought. Because :inserty: :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a rainy day.';
+let insertX = ['Superman','Deadpool','Easter'];
+let insertY = ['Rainy day guy','that dude','the lady'];
 let insertZ = ['spontaneously combusted','melted into a puddle on the sidewalk','turned into a slug and crawled away'];
 
 function randomValueFromArray(array){
