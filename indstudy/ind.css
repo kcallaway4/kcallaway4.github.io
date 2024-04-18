@@ -1,7 +1,22 @@
 body{
     background-color: #000;
 }
-
+h1 {
+    color: white;
+    font-size: 30px;
+    margin: 10px;
+    padding: 15px;
+}
+p{
+    color:white;
+    font-size:20px;
+}
+h2{
+    color:black;
+    font-size: 30px ;
+    display: inline;
+    top: 100px;
+}
 .header {
     font-size: 200%;
     padding: 50px 20px;
@@ -44,4 +59,90 @@ nav a {
     grid-template-columns: 1fr 1fr;
     gap: 1px;
   
+}
+img {
+    max-width: 100%;
+    display: block;
+    float: left;
+    padding:10px;
   }
+.grid {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 980px;
+  
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  
+  }
+/* The actual timeline (the vertical ruler) */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #FFBF00;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+  }
+/* Container around content */
+.container {
+    padding: 10px 10px;
+    position: relative;
+    background-color: inherit;
+    width: 40%;
+  }
+  
+/* The circles on the timeline */
+.container::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: 	#8B0000;
+    border: 4px solid #DC143C;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+  
+/* Place the container to the left */
+.left {
+    left: 23%;
+    width: 300px;
+}
+  
+/* Place the container to the right */
+.right {
+    left: 50%;
+    width: 300px;
+}
+  
+/* Fix the circle for containers on the right side */
+.right::after {
+    left: -16px;
+}
+  
+/* The actual content */
+.content {
+    padding: 10px;
+    background-color: white;
+    position: relative;
+    border-radius: 10px;
+}
+/* Make sure that all arrows are pointing leftwards */
+.container::before {
+    left: 60px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+}
