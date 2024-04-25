@@ -20,8 +20,13 @@ h2{
     font-size: 30px ;
     display: inline;
     top: 100px;
+
 }
-header {
+/* #grad { */
+    /* background-image: linear-gradient(to bottom, rgba(255,0,0,0), #DC143C ); */
+    /* background: radial-gradient(#e66465, #9198e5); */
+  /* } */
+.header {
     font-size: 200%;
     padding: 50px 20px;
     margin: 0 auto;
@@ -29,18 +34,18 @@ header {
     text-align: center;
     color:white;
     text-shadow: #8B0000 3px 5px;
-
-    /* width: 100%; 
-    text-align: center; 
-    border-bottom: 1px solid white; 
-    line-height: 0.1em;
-    margin: 10px 0 20px;  */
+    display: flex; 
+    flex-direction: row; 
+    
 }
-/* header span {
-    /* background:#fff; 
-    padding:0 10px;  */
-
-/* } */
+.header:before, .header:after {
+    content: "";
+    flex: 1 1;
+    /* border-bottom: 3px solid #FFBF00; */
+    margin: auto;
+    width: relative;
+    
+}
 nav{
     background-color: white;
     padding: .5em;
@@ -69,7 +74,7 @@ nav a:hover {
 }
 
 .feature {
-    width: 200px;
+    width: 100px;
     padding: 10px;
   }
 
