@@ -1,6 +1,7 @@
 const container = d3.select('#scrolly-side');
 const stepSel = container.selectAll('.step');
-let imageList = ['indimg/Finger_model01.JPG', 'indimg/Finger_model02.JPG', 'indimg/misprints4.JPG', 'indimg/finger_model04.2.JPG', 'indimg/finger_model03.JPG','indimg/motor_attach01.JPG','indimg/finger_model05.2.JPG','indimg/hand_attach01.JPG','indimg/hand_attach02.JPG','indimg/hand_attach03.2.JPG', 'indimg/hand_attach04.2.JPG']
+// let imageList = ['indimg/Finger_model01.JPG', 'indimg/Finger_model02.JPG', 'indimg/misprints4.JPG', 'indimg/finger_model04.2.JPG', 'indimg/finger_model03.JPG','indimg/motor_attach01.JPG','indimg/finger_model05.2.JPG','indimg/hand_attach01.JPG','indimg/hand_attach02.JPG','indimg/hand_attach03.2.JPG', 'indimg/hand_attach04.2.JPG']
+let gifList = ['indimg/finger01vid.gif', 'indimg/finger02.gif', 'indimg/finger03.gif', 'indimg/finger04.gif','indimg/finger05.gif', 'indimg/pointer.gif', 'indimg/middle.gif', 'indimg/pinky.gif', 'indimg/thumb.gif']
 // let image2List = ['indimg/motor_attach01.JPG','indimg/finger_model05.JPG']
 
 function updateChart(index) {
@@ -8,7 +9,7 @@ function updateChart(index) {
   const width = sel.attr('data-width');
   const ind = sel.attr('data-index');
   stepSel.classed('is-active', (d, i) => i === index);
-  container.select('.photo').attr('src', imageList[index]);
+  container.select('.gif').attr('src', gifList[index]);
 //   container.select('.photo2').attr('src', image2List[index]);
 }
 
@@ -31,3 +32,6 @@ function init() {
 }
 
 init();
+
+// +++++++ Scroll ++++++ 
+

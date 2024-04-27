@@ -1,20 +1,21 @@
 body{
     background-color: #000;
-
+    font-family: Arial, Helvetica, sans-serif;
 }
 h1 {
     color: white;
-    font-size: 30px;
-    margin: 10px;
-    padding: 15px;
-    text-shadow: #8B0000 3px 5px;
-    text-align: center;
+    font-size: 90px;
+    margin: 50px;
+    padding: 70px;
+    text-align: left center
+
 }
 p{
     color:white;
     font-size:20px;
     margin: 10px;
     padding:15px;
+    text-align: center;
 }
 h2{
     color:black;
@@ -23,18 +24,8 @@ h2{
     top: 100px;
 
 }
-/* #grad { */
-    /* background-image: linear-gradient(to bottom, rgba(255,0,0,0), #DC143C ); */
-    /* background: radial-gradient(#e66465, #9198e5); */
-  /* } */
-.bg{
-    background-image: url('indimg/background.jpg');
-    height:relative;
-    width:relative;
-    background-position: center;
-    position: relative;
 
-}
+
 .header {
     font-size: 200%;
     padding: 50px 20px;
@@ -42,7 +33,6 @@ h2{
     max-width: 980px;
     text-align: center;
     color:white;
-    text-shadow: #8B0000 3px 5px;
     display: flex; 
     flex-direction: row; 
 
@@ -56,7 +46,7 @@ h2{
     
 }
 nav{
-    background-color: white;
+    background-color: black;
     padding: .5em;
     position: sticky;
     top: 0% ;
@@ -69,16 +59,16 @@ nav ul {
     justify-content: space-evenly;
 }
 nav a {
-    color: black;
+    color: white;
     text-decoration: none;
     padding: .5em 1em;
+
 }
 nav a:hover {
     color: white;
     width: relative;
     height:relative;
-    background-image: url('indimg/background.jpg');
-    background-position: top right;
+    text-decoration: underline;
 
 }
 
@@ -115,6 +105,15 @@ img {
   #section-6{
     text-align: center;
   }
+/* ++++++++++ Scroll Text ++++++++  */
+/* .scroll {
+    will-change: opacity, transform; 
+    opacity: 1; 
+    transform: translate3d(-0.0952vw, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); 
+    transform-style: preserve-3d;
+} */
+
+
 
 /* +++++++ Photo timeline CSS ++++++++ */
 .filler {
@@ -138,15 +137,13 @@ img {
   #scrolly-side .scrolly article .step {
     min-height: 67vh;
     margin-bottom: 1rem;
-    background-color: #8B0000;
     transition: background-color 250ms ease-in-out;
   }
   #scrolly-side .scrolly article .step:last-of-type {
     margin-bottom: 0;
   }
   #scrolly-side .scrolly article .step.is-active {
-    background-image: url('indimg/background2.jpg');
-    background-size: cover;
+    background-color: grey;
   }
   #scrolly-side .scrolly article .step p {
     margin: 0;
@@ -159,7 +156,6 @@ img {
     position: sticky;
     width: 100%;
     height: 50vh;
-    background-color: #8B0000; 
     margin: 0;
     top: 25vh;
     left: 0;
