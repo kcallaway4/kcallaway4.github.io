@@ -12,10 +12,10 @@ h1 {
 }
 p{
     color:white;
-    font-size:20px;
+    /* font-size: 20px; */
     margin: 10px;
     padding:15px;
-    text-align: center;
+    /* text-align: center; */
 }
 h2{
     color:black;
@@ -24,7 +24,13 @@ h2{
     top: 100px;
 
 }
-
+.purpose{
+    text-align: left;
+}
+/* .purpose2{
+    text-align: center;
+    font-size: 40px;
+} */
 
 .header {
     font-size: 200%;
@@ -73,9 +79,11 @@ nav a:hover {
 }
 
 .feature {
-    width: 100px;
-    padding: 10px;
-  }
+    width: 100%;
+    padding-top: 300px;
+    font-size: 40px;
+    text-align: center;
+}
 
 .photos {
     list-style: none;
@@ -91,23 +99,22 @@ nav a:hover {
     font-size: 90px;
     color:white;
     text-align: left center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    padding-top: 200px;
+    padding-left: 50px;
 
 }
 .piano{
-    width: 800px;
+    width: auto;
     height: 400px;
     background-image: url(indimg/pianohand3.png);
-    background-size: cover;
-    float:right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    /* float:right; */
 }
-/* .grid1{
-    display: grid;
-    grid-template-columns: 1fr;
-    /* grid-template-rows: 1fr; */
-    /* width: 100%;
-    overflow-x: hidden; */
-
-/* } */
+/* journal grid */
 .gridimg-vert {
     width: relative;
     height: 450px;
@@ -120,17 +127,41 @@ nav a:hover {
 .grid2 {
     display: grid;
     grid-gap: 5px;
-    padding:5px; 
+    padding: 5px; 
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+    overflow: hidden;
+  }
+/* Photo grid */
+.gridimg-vert2 {
+    width: relative;
+    height: 450px;
+    max-width: 100%;
+}
+.gridimg-hor2 {
+    width: relative;
+    height: 250px;
+    max-width: 100%;
+}
+.grid3 {
+    display: grid;
+    grid-gap: 5px;
+    padding: 5px; 
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     width: 100%;
     overflow-x: hidden;
+
   }
 #section-0 {
-    margin-bottom: 500px;
+    margin-bottom: 300px;
 }
 #section-1{
     margin-top: 100px;
+}
+#section-2{
+    margin-top: 200px;
 }
   #section-6{
     text-align: center;
@@ -139,7 +170,7 @@ nav a:hover {
 
 
 
-/* +++++++ Photo timeline CSS ++++++++ */
+/* +++++++ Model timeline CSS ++++++++ */
 .filler {
     height: 20rem;
     text-align: center;

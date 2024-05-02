@@ -1,25 +1,81 @@
 html, body {
     margin: 0;
-  }
+}
   
-  html {
+html {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     height: 100%;
-  }
+}
   
-  body {
+body {
     overflow: hidden;
     height: inherit;
-  }
+}
   
-  h1 {
+h1 {
     font-size: 2rem;
     letter-spacing: -1px;
-    position: absolute;
+    /* position: absolute; */
     margin: 0;
     top: -4px;
     right: 5px;
+    text-align: center;
   
-    color: transparent;
-    text-shadow: 0 0 4px black;
+    color: black;
+    /* text-shadow: 0 0 4px black; */
+}
+/* .popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.popup-content {
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+} */
+.msgBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 242px;
+    background: #eee;
+  }
+
+  .msgBox p {
+    line-height: 1.5;
+    padding: 10px 20px;
+    color: #333;
+    padding-left: 82px;
+    background-position: 25px center;
+    background-repeat: no-repeat;
+  }
+
+  .msgBox button {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.1rem;
+    color: #aaa;
   }

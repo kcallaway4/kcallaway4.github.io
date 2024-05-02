@@ -37,44 +37,39 @@
 
     <article>
       <section id="section-0">
-        <!-- <div class="grid1">
-          <li>
-            <h1>Mechanical Piano Playing Hand </h1>
-          </li>
-          <li>
-            <img src="indimg/pianohand.png" class="piano">
-          </li>
-        </div> -->
         <div class="container">
-          <h1>
-            Mechanical Piano <br>
-            Playing Hand
-          </h1>
-          <div class="piano"></div>
+          <div class="piano">
+            
+              Mechanical Piano <br>
+              Playing Hand
+            
+          </div>
         </div>
-        
+
         <div class="feature">
-        </div>
+        
         <p>
-          Made up of specialized 3D modeled fingers that fit over the human hand and driven by servo motors. When the panel of buttons are pressed, each corresponding finger pushes the wearer’s hand down to play each note on the piano. 
-
-
+          Made up of specialized 3D modeled fingers that fit over the human hand; driven by servo motors. When a panel of buttons are pressed, each corresponding finger pushes the wearer’s hand down to play each note on the piano. 
         </p>
+        </div>
       </section>
+      
 
 
         <section id="section-1">
-          <!-- <div class="text"> -->
+          <div class="purpose">
             <h1>
               Inspired by those <br>
               who love music
             </h1>
           </div>
-
+          <div class="feature">
+            <p>
+            Music has been a passion of mine for my whole life and has been the driving factor behind a lot of my physical computing projects. This idea was based on my love for music and desire to help those who share that love but are physically incapable. This is just the start of my journey to make music more accessible. 
+            </p>
+            </div>
         </section>
-        <p>
-          Music has been a passion of mine for my whole life and has been the driving factor behind a lot of my physical computing projects. This idea was based on my love for music and desire to help those who share that love but are physically incapable. This is just the start of my journey to make music more accessible. 
-        </p>
+
         <section id="section-2">
           <h1>My Journal</h1>
           <div class="grid2">
@@ -123,54 +118,74 @@
               <article>
                   <div class='step is-active' data-width='10%' data-index='0'>
                       <p>Finger Model 1</p>
-                      <p>This model was to help visualize how each finger would move naturally the wearer's finger. Originally, the finger would be driven by a chord pulled my the motor. </p>
+                      <p>Model one demonstrated a chord driven finger that, when tension was released, would snap back to its original position with a spring.
+                      <br> <br>
+                      The issue was the position of the track. When the chord was pulled, the finger would pull horizontally. </p>
                   </div>
+                  <!--+++++++++++++++++++++++++++++-->
                   <div class='step' data-width='90%' data-index='1'>
                       <p>Finger Model 2</p>
-                      <p>This is the first 3D modeled version. The issue with this was that the chord would pull the wearer's finger horizontally, rather then down. The next iterations were attempts to move the cable below the strucutre.</p>
+                      <p>In order to allow the chord to pull vertically, I created a layered structure with the track in between two sections. This allowed for the structure to rest in a more comfortable position while also forcing a more natural movement. </p>
                   </div>
+                  <!--+++++++++++++++++++++++++++++-->
                   <div class='step' data-width='50%' data-index='2'>
-                      <p>Models 3-6 (misprints)</p>
-                      <p>These models were scrapped either because they failed to print properly or they were incorrectly sized. The cable track holes were too small, they didn't fit my finger properly, and the screw holes didn't align properly.</p>
+                      <p>Finger Model 3</p>
+                      <p>I have to make sure to add multiple track holes for the chord to move smoothly and to ensure a stable structure. </p>
                   </div>
-                  <div class='step' data-width='50%' data-index='3'>
-                      <p>Finger Model 7</p>
-                      <p>This iteration was a new idea for how to form the wearer's hand into proper playing position. I tend to over complicate, this is an example of that. The joint adjust was unecessarily complex and 3 joints were not needed in order to move the finger properly.</p>
+                  <!--+++++++++++++++++++++++++++++-->
+                  <div class='step' data-width='0%' data-index='3'>
+                      <p>Finger Model 4</p>
+                      <p>This was an attempt to connect the strucutre to the wearer's finger. The finger loop was poorly sized, unstable, and unnatural. This idea was scrapped. </p>
                   </div>
-                  <div class='step' data-width='50%' data-index='4'>
-                      <p>Finger Model 8</p>
-                      <p>This was the first iteration that I worked with velcrow straps as a method of attaching the structure to the wearer's finger. This model still included the spring attachment that proved unecessary. </p>
+                  <!--+++++++++++++++++++++++++++++-->
+                  <div class='step' data-width='90%' data-index='4'>
+                      <p>Finger Model 5</p>
+                      <p>Another attempt to attach to the wearer's hand. This was meant to be a slot to weave fabric through to make comfortably fit one's hand. It was an unsuccessful print due to printer malfunction.  </p>
                   </div>
+                  <!--+++++++++++++++++++++++++++++-->
                   <div class='step' data-width='50%' data-index='5'>
-                      <p>Motor Attachments</p>
-                      <p>From this point onward, the mechanism was connected directly to the motor in order to simplify and avoid problems down the line. In order to create the proper size connecter, I simply printed multiple pieces. Once I found the correct size, I could attach it to the next finger iteration.</p>
+                      <p>Finger Model 6</p>
+                      <p>This iteration brought how to position the wearer's hand back into focus. At this point, controlling all three finger joints was the plan. 
+                      <br> <br>
+                      I created a rotating screw slot that allowed the joint to have an adjustable angle. But I soon realized that this was an overcomplication that could be simplified.
+                      </p>
                   </div>
-                  <div class='step' data-width='50%' data-index='6'>
-                      <p>Finger Model 10</p>
-                      <p>Friction was not enough to hold the motor fin in place within the connector. It was a good enough fit to use glue to hold the fin in place. </p>
+                  <!--+++++++++++++++++++++++++++++-->
+                  <div class='step' data-width='0%' data-index='6'>
+                      <p>Finger Model 7</p>
+                      <p> After simplifying, this was the model that I landed with. The screws tighten at the preferred angle while the motor pulls the cable through the system to bend the wearer's finger. 
+                        <br> <br>
+                      The thought process from the previous model kept me thinking of how I could simplify further... </p>
                   </div>
-                  <div class='step' data-width='50%' data-index='7'>
-                      <p>Hand Attachment 1</p>
-                      <p>This was the final iteration for the pointer finger structure. The next steps were to create the rest of the fingers in a way that would properly align with my finger joints and attach to motors of different orientations.</p>
-                  </div>
-                  <div class='step' data-width='50%' data-index='8'>
+                  <!--+++++++++++++++++++++++++++++-->
+                  <div class='step' data-width='90%' data-index='7'>
                       <p>Motor Attachment 1</p>
-                      <p>After contemplating the more effective way to mount the motors, I decided to build the hand plate with a thin, moldable metal. In order for this mechanism to work, the motors needed to connect to a firm structure, but for the benefit of the wearer, it also needed to mold to the natural shape of the human hand. </p>
-                      <br>
-                      <p>The issue now was how to attach the metal plate to my hand? This iteration, I used a thick chord the wove around my hand through holes in the plate. Eventually, I switched to an elastic fabric. </p>
+                      <p>This was when I coompletely switched up the driving force of the finger system. Rather than being controlled my a cable that was pulled by a motor, I created a connector to attach to the motor directly. After a few iterations to get the size accurate, the motor fin fit perfectly with a little hot glue to hold it in place.</p>
                   </div>
-                  <div class='step' data-width='50%' data-index='9'>
-                      <p>Finger Model 13</p>
-                      <p>This was the foundation for how I would later place the other four motors on the hand. It was difficult to place the motors in an efficient, yet effective way. See journal entry _______ to see the plan for how I did so. </p>
+                  <!--+++++++++++++++++++++++++++++-->
+                  <div class='step' data-width='50%' data-index='8'>
+                      <p>Finger Model 8 <br>(Pointer Finger)</p>
+                      <p>This was my first model that incorporated the direct motor attachment. This model was specifically sized for the pointer finger and would be the final design iteration. Moving forward, I began adjusting to allow for each finger to correspond with the wearer's along with the motors.  </p>
                   </div>
+                  <!--+++++++++++++++++++++++++++++-->
+                  <div class='step' data-width='0%' data-index='9'>
+                      <p>Finger Model 9<br> (Middle finger)</p>
+                      <p>This model is the model for the middle finger. In order to fit all five motors on the wearer's hand, I had to incorporate two stacks. The middle finger and pinky are connected to the motors on the tops of the stacks. The design needed to account for this placement. </p>
+                  </div>
+                  <!--+++++++++++++++++++++++++++++-->
+                  <div class='step' data-width='90%' data-index='9'>
+                    <p>Finger Model 10<br> (Ring finger)</p>
+                    <p>The ring finger proved difficult. At first I had the ring finger connected to the motor on the bottom of stack two. This ended up failing because the two fingers in the middle of a hand need more space in order to fully move without getting stuck on skin. Because of this, I had to reprint and reorient the pinky and ring finger. </p>
+                  </div>
+                  <!--+++++++++++++++++++++++++++++-->
+                
+
               </article>
               <!--  sticky graphic   -->
               <figure class='sticky'>
-                  <!-- <img class='photo'src='indimg/Finger_model01.JPG' > -->
-                  <img class="gif" src="indimg/finger01vid.gif">
-                
-              </figure>
-          
+                <img class="gif" src="indimg/finger01vid.gif">
+              
+            </figure>
   
           </div>     
       </section>
@@ -178,7 +193,41 @@
                     
 
         <section id="section-4">
-        <h1> Photo Log</h1>
+          <h1> Photo Log</h1>
+          <div class="grid3">
+            <li>
+              <img class= "gridimg-vert2" src="indimg/Finger_model01.JPG" alt="model01">
+            </li>
+            <li>
+              <img class ="gridimg-vert2" src="indimg/Finger_model02.JPG" alt ="model02">
+            </li>
+            <li>
+              <img class ="gridimg-vert2" src="indimg/misprints4.JPG" alt ="misprints">
+            </li>
+            <li>
+              <img class ="gridimg-vert2" src="indimg/hand_attach03.2.JPG" alt ="attach1">
+            </li>
+            <li>
+              <img class ="gridimg-vert2" src="indimg/hand_attach04.2.JPG" alt ="attach2">
+            </li>
+            <li>
+              <img class ="gridimg-hor2" src="indimg/finger_model04.2.JPG" alt ="4.2">
+            </li>
+            <li>
+              <img class ="gridimg-hor2" src="indimg/finger_model05.2.JPG" alt ="5.2">
+            </li>
+            <li>
+              <img class ="gridimg-hor2" src="indimg/circuit1.JPG" alt ="circuit1">
+            </li>
+            <li>
+              <img class ="gridimg-hor2" src="indimg/allfingers.JPG" alt ="all">
+            </li>
+            <li>
+              <img class ="gridimg-hor2" src="indimg/allfingers2.JPG" alt ="all2">
+            </li>
+          
+
+          </div>
         </section>
 
 
