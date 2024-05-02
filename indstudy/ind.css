@@ -271,13 +271,20 @@ nav a:hover {
         font-size: 20px;
         text-align: center;
     }
-    .container, .container2{
+    .container{
+        font-size: 40px;
+        text-align: center;
+        padding: 30px;
+    }
+    .container2{
         font-size: 40px;
         text-align: left;
         
     }
+
     #section-0{
         margin-bottom: 100px ;
+        margin-top: 10px;
     }
     h1{
         font-size: 40px;
@@ -286,9 +293,18 @@ nav a:hover {
         text-align: center;
 
     }
-    .piano, .music {
-        height: 500px;
-        object-position: center;
+    .piano{
+        height: 300px;
+        width: 100%;
+        background-position: center;
+        background-size: contain;
+    }
+    .music {
+        height: 300px;
+        width:100%;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 
 }
