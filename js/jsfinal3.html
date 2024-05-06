@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Game</title>
+  <style>
+    .button {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    #message-box {
+      position: absolute;
+      top: 50%;
+      right: 40%;
+      display: none;
+      width: 300px;
+      height: 300px;
+      color: white;
+    }
+    #reset-button {
+        top: 50%;
+        right: 45%;
+        width:300px;
+        height: 150px;
+    }
+    #submit-button{
+        top:40%;
+        right: 45%;
+        width: 300px;
+        height:150px;
+
+    }
+    #volume-bar {
+      position: fixed;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 20px;
+      background-color: #ddd;
+    }
+    #volume-level {
+      height: 100%;
+      background-color: green;
+    }
+    h1{
+        position: fixed;
+        top:5px;
+        left:42%;
+        color: white;
+    }
+    .box{
+        width: 400px;
+        height: 100px;
+        background-color: lightblue;
+        position: fixed;
+        top: 5px;
+        right:10px;
+        padding: 5px;
+    }
+    h2{
+        position: fixed;
+        top: 5px;
+        right: 10px;
+        color: black;
+        font-size: 18px;
+        padding: 10px;
+    }
+    .arrow-button {
+      font-size: 24px;
+      width: 50px;
+      height: 50px;
+      background-color: #ccc;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        overflow: hidden; /* Prevent scrollbars */
+    }
+    .circle {
+        position: absolute;
+        background-color: white;
+        border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+    <div class="bg">
+        <canvas></canvas>
+        <div id="message-box">
+            Enter your volume: 
+            <button class="arrow-button" id="volume-up">↑</button>
+            <input type="number" id="user-volume" min="0" max="100" onkeydown="return false">
+            <button class="arrow-button" id="volume-down">↓</button>
+            <button id="submit-button">Submit</button>
+            <button id="reset-button" >Reset</button>
+        </div>
+        <h1>Current Volume</h1>
+        <div class="box">
+            <h2>Click on the moving planets to change their color.<br> Once all are blue, you can change the  volume. <br> Hint: Is it the right shade?</h2>
+        </div>
+        <div id="volume-bar">
+            <div id="volume-level"></div>
+        </div>
+    </div>
+    <script>
+
+//  ++++++++++ Background building +++++++++++++++++++
+
+        // Function to generate a random number between min and max (inclusive)
+        function getRandomNumber(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // Function to generate a random position for the circle
+        function getRandomPosition() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const x = getRandomNumber(0, screenWidth);
+            const y = getRandomNumber(0, screenHeight);
+            return { x, y };
+        }
+
+  // Function to generate a random size for the circle
+        function getRandomSize() {
+            return getRandomNumber(1, 5); // Adjust min and max size as needed
+        }
+
+        // Function to create and append a circle element with random properties
+        function createCircle() {
+            const circle = document.createElement('div');
+            circle.className = 'circle';
+            const position = getRandomPosition();
+            circle.style.left = `${position.x}px`;
+            circle.style.top = `${position.y}px`;
+            const size = getRandomSize();
+            circle.style.width = `${size}px`;
+            circle.style.height = `${size}px`;
+            document.body.appendChild(circle);
+        }
+
+        // Generate 1000 circles
+        for (let i = 0; i < 1000; i++) {
+            createCircle();
+        }
+
+//  ++++++++++ Volume bar and message box building +++++++++
+        const buttons = [];
+        const numButtons = 10;
+        let blueCount = 0;
+        let isPaused = false;
+
+
+        const messageBox = document.getElementById('message-box');
+        const submitButton = document.getElementById('submit-button');
+        const volumeBar = document.getElementById('volume-bar');
+        const volumeLevel = document.getElementById('volume-level');
+        const userVolumeInput = document.getElementById('user-volume');
+        const resetButton = document.getElementById('reset-button');
+        const volumeUpButton = document.getElementById('volume-up');
+        const volumeDownButton = document.getElementById('volume-down');
+
+    volumeUpButton.addEventListener('click', () => {
+      adjustVolume(1); // Increase volume by 1
+    });
+
+    volumeDownButton.addEventListener('click', () => {
+      adjustVolume(-1); // Decrease volume by 1
+    });
+
+    submitButton.addEventListener('click', () => {
+      volumeBar.style.display = 'block';
+      updateVolumeBar();
+    });
+
+    resetButton.addEventListener('click', () => {
+        isPaused = false;
+        blueCount = 0;
+        messageBox.style.display = 'none';
+  // Remove all existing buttons
+        for (const ball of balls){
+            ball.color = randomRGB();
+            ball.x = random(0 + ball.size, width - ball.size); // Reset ball positions
+            ball.y = random(0 + ball.size, height - ball.size);
+            ball.velX = random(-1, 1); // Reset ball velocities
+            ball.velY = random(-1, 1);
+        }
+        
+        startAnimation();
+    });
+
+
+    function adjustVolume(step) {
+      let newValue = parseInt(userVolumeInput.value) || 0;
+      newValue += step;
+      newValue = Math.min(Math.max(newValue, 0), 100); // Clamp value between 0 and 100
+      userVolumeInput.value = newValue;
+      updateVolumeBar();
+    }
+
+    function updateVolumeBar() {
+      const volume = userVolumeInput.value;
+      const normalizedVolume = volume / 100;
+      volumeLevel.style.width = `${normalizedVolume * 200}px`;
+    }
+        
+
+
+//  ++++++++++ Planet building ++++++++++++++++++++++
+
+  
+// setup canvas
+
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
+
+const width = (canvas.width = window.innerWidth);
+const height = (canvas.height = window.innerHeight);
+const minVel = 1;
+const maxVel = 1.5;
+
+// function to generate random number 
+
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+// function to generate random color
+
+function randomRGB() {
+  return `rgb(${random(0, 255)},${random(0, 255)},${random(0, 255)})`;
+}
+
+function loop (){
+    ctx.fillStyle = "rgb(0 0 0 / 25%)";
+    ctx.fillRect(0,0,width,height);
+
+    for (const ball of balls) {
+        ball.draw();
+        ball.update();
+        // ball.collisionDetect();
+    }
+    requestAnimationFrame(loop);
+}
+
+class Ball{
+    
+    constructor(x, y, velX, velY, color, size){
+        this.x = x;
+        this.y = y;
+        this.velX = velX;
+        this.velY = velY;
+        this.color = color;
+        this.size = size;
+    }
+
+    draw(){
+        ctx.beginPath();
+        ctx.fillStyle = this.color;
+        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+    
+    update(){ 
+        //when ball hits right side
+        if ((this.x + this.size) >= width){
+            this.velX = -(this.velX);
+        }
+        //when ball hits left side 
+        if ((this.x - this.size) <= 0){
+            this.velX = -(this.velX);
+        }
+        //when ball hits bottom
+        if ((this.y + this.size)>= height){
+            this.velY = -(this.velY);
+        }
+        //when ball hit top
+        if ((this.y - this.size) <= 0){
+            this.velY = -(this.velY);
+        }
+        
+        this.x += this.velX ;
+        this.y += this.velY ;
+    }
+    handleClick() {
+        const colors = ["red", "green", "yellow", "blue"];
+        const currentIndex = colors.indexOf(this.color);
+        const nextColor = colors[(currentIndex + 1) % colors.length];
+        this.color = nextColor;
+
+    }
+
+}
+
+
+const balls = [];
+let blueBallCount = 0;
+let pauseAnimationFlag = false;
+
+
+
+//Add event listener for mouse clicks
+canvas.addEventListener("click", function(event) {
+    const circ = canvas.getBoundingClientRect();
+    const mouseX = event.clientX - circ.left;
+    const mouseY = event.clientY - circ.top;
+  
+    // Check if the click is inside any button
+    for (const ball of balls) {
+      const distance = Math.sqrt((mouseX - ball.x) ** 2 + (mouseY - ball.y) ** 2);
+      if (distance <= ball.size && ball.color !== 'blue'){
+       ball.handleClick();
+       checkBlue();
+      }
+    }  
+  });
+  
+  function checkBlue(){
+    let blueBallCount = 0;
+    for (const ball of balls){
+        if(ball.color === 'blue'){
+            blueBallCount++;
+            if (blueBallCount === 10){
+                isPaused=true; //Pause animation
+                document.getElementById('message-box').style.display = 'block';
+                break;
+            }
+        }
+    }
+  }
+ 
+
+  while (balls.length < 10) {
+    const size = random(10 ,20);
+    const ball = new Ball(
+        random(0 + size, width - size),
+        random(0 + size, height - size),
+        random(-1,1),
+        random(-1,1),
+        randomRGB(),
+        size,
+    );
+    balls.push(ball);
+    }
+loop();
+
+  </script>
+</body>
+</html>

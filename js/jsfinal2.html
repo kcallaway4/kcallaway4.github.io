@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Game</title>
+  <style>
+    .button {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    #message-box {
+      position: absolute;
+      top: 50%;
+      right: 40%;
+      display: none;
+      width: 300px;
+      height: 300px;
+      color: white;
+    }
+    #reset-button {
+        top: 50%;
+        right: 45%;
+        width:300px;
+        height: 150px;
+    }
+    #submit-button{
+        top:40%;
+        right: 45%;
+        width: 300px;
+        height:150px;
+
+    }
+    #volume-bar {
+      position: fixed;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 20px;
+      background-color: #ddd;
+    }
+    #volume-level {
+      height: 100%;
+      background-color: green;
+    }
+    h1{
+        position: fixed;
+        top:5px;
+        left:42%;
+        color: white;
+    }
+    .arrow-button {
+      font-size: 24px;
+      width: 50px;
+      height: 50px;
+      background-color: #ccc;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        overflow: hidden; /* Prevent scrollbars */
+    }
+    .circle {
+        position: absolute;
+        background-color: white;
+        border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+    <div class="bg">
+        <div id="message-box">
+            Enter your volume: 
+            <button class="arrow-button" id="volume-up">↑</button>
+            <input type="number" id="user-volume" min="0" max="100" onkeydown="return false">
+            <button class="arrow-button" id="volume-down">↓</button>
+            <button id="submit-button">Submit</button>
+            <button id="reset-button" >Reset</button>
+        </div>
+        <h1>Current Volume</h1>
+        <div id="volume-bar">
+            <div id="volume-level"></div>
+        </div>
+    </div>
+    <script>
+
+//  ++++++++++ Background building +++++++++++++++++++
+
+        // Function to generate a random number between min and max (inclusive)
+        function getRandomNumber(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // Function to generate a random position for the circle
+        function getRandomPosition() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const x = getRandomNumber(0, screenWidth);
+            const y = getRandomNumber(0, screenHeight);
+            return { x, y };
+        }
+
+  // Function to generate a random size for the circle
+        function getRandomSize() {
+            return getRandomNumber(1, 5); // Adjust min and max size as needed
+        }
+
+        // Function to create and append a circle element with random properties
+        function createCircle() {
+            const circle = document.createElement('div');
+            circle.className = 'circle';
+            const position = getRandomPosition();
+            circle.style.left = `${position.x}px`;
+            circle.style.top = `${position.y}px`;
+            const size = getRandomSize();
+            circle.style.width = `${size}px`;
+            circle.style.height = `${size}px`;
+            document.body.appendChild(circle);
+        }
+
+        // Generate 1000 circles
+        for (let i = 0; i < 1000; i++) {
+            createCircle();
+        }
+
+//  ++++++++++ Volum bar and message box building +++++++++
+        const buttons = [];
+        let yellowButton;
+        const numButtons = 4;
+        let blueCount = 0;
+        let isPaused = false;
+
+
+        const messageBox = document.getElementById('message-box');
+        const submitButton = document.getElementById('submit-button');
+        const volumeBar = document.getElementById('volume-bar');
+        const volumeLevel = document.getElementById('volume-level');
+        const userVolumeInput = document.getElementById('user-volume');
+        const resetButton = document.getElementById('reset-button');
+        const volumeUpButton = document.getElementById('volume-up');
+        const volumeDownButton = document.getElementById('volume-down');
+
+    volumeUpButton.addEventListener('click', () => {
+      adjustVolume(1); // Increase volume by 1
+    });
+
+    volumeDownButton.addEventListener('click', () => {
+      adjustVolume(-1); // Decrease volume by 1
+    });
+
+    submitButton.addEventListener('click', () => {
+      volumeBar.style.display = 'block';
+      updateVolumeBar();
+    });
+
+    resetButton.addEventListener('click', () => {
+        isPaused = false;
+        blueCount = 0;
+        messageBox.style.display = 'none';
+  // Remove all existing buttons
+        for (const button of buttons) {
+            button.parentNode.removeChild(button);
+        }
+        buttons.length = 0; // Clear the buttons array
+
+        // Create four new buttons
+        for (let i = 0; i < numButtons; i++) {
+            createButton();
+        }
+        startAnimation();
+    });
+
+
+    function adjustVolume(step) {
+      let newValue = parseInt(userVolumeInput.value) || 0;
+      newValue += step;
+      newValue = Math.min(Math.max(newValue, 0), 100); // Clamp value between 0 and 100
+      userVolumeInput.value = newValue;
+      updateVolumeBar();
+    }
+
+    function updateVolumeBar() {
+      const volume = userVolumeInput.value;
+      const normalizedVolume = volume / 100;
+      volumeLevel.style.width = `${normalizedVolume * 200}px`;
+    }
+        
+
+
+//  ++++++++++ Planet building ++++++++++++++++++++++
+
+    // Function to create a button
+    function createButton(color) {
+        const button = document.createElement('button');
+        button.className = 'button';
+        button.style.backgroundColor = color;
+        // button.style.top = `${Math.random() * (window.innerHeight - 100)}px`;
+        // button.style.left = `${Math.random() * (window.innerWidth - 100)}px`;
+        const maxX = window.innerWidth - button.offsetWidth; // Maximum X coordinate
+        const maxY = window.innerHeight - button.offsetHeight;
+        const randomX = Math.random() * (maxX);
+        const randomY = Math.random() * (maxY);
+
+        button.style.top = `${randomY}px`;
+        button.style.left = `${randomX}px`; 
+        button.dx = (Math.random() * 2 - 1) * 2; // Horizontal velocity
+        button.dy = (Math.random() * 2 - 1) * 2; // Vertical velocity
+
+        document.body.appendChild(button);
+        buttons.push(button);
+
+        button.addEventListener('click', () => {
+            if (!isPaused) {
+                button.style.backgroundColor = 'blue';
+                blueCount++;
+                if (blueCount === numButtons) {
+                    isPaused = true;
+                    document.getElementById('message-box').style.display = 'block';
+                }
+            }
+        });
+        
+    }
+
+    // Function to move buttons smoothly
+    function moveButtons() {
+        if (!isPaused) {
+            for (const button of buttons) {
+                const rect = button.getBoundingClientRect();
+                let newX = rect.left + button.dx;
+                let newY = rect.top + button.dy;
+
+            // Bounce off the walls
+                if (newX < 0 || newX + rect.width > window.innerWidth) {
+                    button.dx *= -1;
+                }
+                if (newY < 0 || newY + rect.height > window.innerHeight) {
+                    button.dy *= -1;
+                }
+
+            // Update button position
+                button.style.left = `${newX}px`;
+                button.style.top = `${newY}px`;
+
+            // If the yellow button hits the wall, add a new red button
+                if (button === yellowButton && (newX < 0 || newX + rect.width > window.innerWidth || newY < 0 || newY + rect.height > window.innerHeight)) {
+                    createButton('red');
+                }
+            }
+        }
+        requestAnimationFrame(moveButtons);
+    }
+
+// Initialize red buttons
+    for (let i = 0; i < numButtons; i++) {
+        createButton('red');
+    }
+
+// Create yellow button
+    yellowButton = document.createElement('button');
+    yellowButton.className = 'button';
+    yellowButton.style.backgroundColor = 'yellow';
+    yellowButton.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
+    yellowButton.style.left = `${Math.random() * (window.innerWidth - 50)}px`;
+    yellowButton.dx = (Math.random() * 2 - 1) * 2; // Horizontal velocity
+    yellowButton.dy = (Math.random() * 2 - 1) * 2; // Vertical velocity
+    document.body.appendChild(yellowButton);
+
+// Function to move the yellow button smoothly
+    function moveYellowButton() {
+        const rect = yellowButton.getBoundingClientRect();
+        let newX = rect.left + yellowButton.dx;
+        let newY = rect.top + yellowButton.dy;
+        if (!isPaused){
+            // Bounce off the walls
+            if (newX < 0 || newX + rect.width > window.innerWidth) {
+                yellowButton.dx *= -1;
+                createButton('red');
+
+            }
+            if (newY < 0 || newY + rect.height > window.innerHeight) {
+                yellowButton.dy *= -1;
+                createButton('red');
+            }
+        }
+
+    // Update button position
+        yellowButton.style.left = `${newX}px`;
+        yellowButton.style.top = `${newY}px`;
+
+        requestAnimationFrame(moveYellowButton);
+    }
+
+    // Start moving buttons
+    moveButtons();
+    moveYellowButton();
+
+    startAnimation();
+
+
+  </script>
+</body>
+</html>

@@ -125,20 +125,20 @@ canvas.addEventListener("click", function(event) {
       pauseAnimationFlag = true;
       displayMessage();
     }
-}
+  }
+  // +++++dont need+++++++
+function openPopUp() {
+    const popupContainer = document.querySelector('.popup-container');
+    const closeButton = document.querySelector('.close');
+    const textInput = document.getElementById('textInput');
+    const submitButton = document.getElementById('submitButton');
   
-// function openPopUp() {
-//     const popupContainer = document.querySelector('.popup-container');
-//     const closeButton = document.querySelector('.close');
-//     const textInput = document.getElementById('textInput');
-//     const submitButton = document.getElementById('submitButton');
-  
-//     if (pauseAnimationFlag) {
-//       popupContainer.style.display = 'flex'; // Change display to flex to enable centering
-//       textInput.focus();
-//     }
-//   }
-  
+    if (pauseAnimationFlag) {
+      popupContainer.style.display = 'flex'; // Change display to flex to enable centering
+      textInput.focus();
+    }
+  }
+ 
 function displayMessage(msgText, msgType) {
     const body = document.body;
 
